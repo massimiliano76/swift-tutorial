@@ -10,7 +10,7 @@ export AD_HOC_N_USERNAME=""
 export OSG_USERNAME=""
 export OSG_PROJECT=""
 export BLUES_USERNAME=""
-
+export CLOUD_HEADNODE="http://HEADNODE_ADDRESS:50010"
 #############################################################
 
 
@@ -36,6 +36,14 @@ then
     export JAVA=/usr/local/bin/jdk1.7.0_51/bin
     export SWIFT=/usr/local/bin/swift-trunk/bin
     export PATH=$JAVA:$SWIFT:$PATH
+fi
+
+if [ -d /opt/swift/swift-0.96.1 ] && [ -d /opt/swift/jdk1.7.0_51 ]
+then
+    export SWIFT=/opt/swift/swift-0.96.1/bin
+    export JAVA=/opt/swift/jdk1.7.0_51/bin
+    export PATH=$SWIFT:$JAVA:$PATH
+    export X509_USER_PROXY=/tmp/x509.$USER.$RANDOM
 fi
 
 echo Swift version is $(swift -version)
